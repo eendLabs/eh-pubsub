@@ -100,8 +100,8 @@ func (b *EventBus) HandlerType() eh.EventHandlerType {
 }
 
 const (
-	aggregateTypeAttribute = "aggregate_type"
-	eventTypeAttribute     = "event_type"
+	aggregateTypeAttribute = "aggregateType"
+	eventTypeAttribute     = "eventType"
 )
 
 // HandleEvent implements the HandleEvent method of the eventhorizon.EventHandler interface.
@@ -345,12 +345,12 @@ func createFilter(m eh.EventMatcher) string {
 
 // evt is the internal event used on the wire only.
 type evt struct {
-	EventType     eh.EventType           `json:"event_type"`
+	EventType     eh.EventType           `json:"eventType"`
 	RawData       json.RawMessage        `json:"data,omitempty"`
 	data          eh.EventData           `json:"-"`
 	Timestamp     time.Time              `json:"timestamp"`
-	AggregateType eh.AggregateType       `json:"aggregate_type"`
-	AggregateID   string                 `json:"aggregate_id"`
+	AggregateType eh.AggregateType       `json:"aggregateType"`
+	AggregateID   string                 `json:"aggregateID"`
 	Version       int                    `json:"version"`
 	Metadata      map[string]interface{} `json:"metadata"`
 	Context       map[string]interface{} `json:"context"`
